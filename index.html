@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f7fa">
+<title>هانی‌پات | ارائه ساده و خلاصه</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#f5f7fa;--panel:#ffffff;--honey:#9a5a00;--honey-soft:#fff4dc;--honey-line:#e8c77d;--blue:#1d5fa8;--blue-soft:#e8f1fb;--blue-line:#b9d3ee;--ink:#14223a;--text:#2b3b52;--muted:#5d6b80;--line:#d5deea;--shadow:0 4px 16px rgba(20,34,58,.08)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif}
+body{background:linear-gradient(180deg,#fbfcfe 0%,#f1f5fa 100%)}
+.slide{display:none;position:relative;width:100%;min-height:100vh;padding:5vh 6vw 13vh;overflow-y:auto}
+.slide.active{display:flex;flex-direction:column}
+.slide-inner{width:min(1100px,90vw);margin:auto;display:flex;flex-direction:column}
+.kicker{font-size:13px;font-weight:800;color:var(--honey);margin-bottom:10px}
+.kicker:before{content:"◆";font-size:9px;margin-left:9px;color:var(--blue)}
+h1{font-size:clamp(32px,4.5vw,58px);line-height:1.4;margin:0 0 16px;font-weight:900;color:var(--ink)}
+h2{font-size:clamp(25px,3vw,39px);line-height:1.5;margin:0 0 18px;font-weight:800;color:var(--ink)}
+h3{font-size:clamp(17px,1.5vw,21px);margin:0 0 7px;color:var(--ink)}
+p,.lead{font-size:clamp(15px,1.25vw,18px);line-height:1.9;color:var(--text);margin:7px 0}
+strong,.accent{color:var(--honey)}
+.subtitle{font-size:clamp(18px,2vw,25px);line-height:1.9;color:var(--text);max-width:900px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:8px 0 12px}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:var(--shadow)}
+.card.gold{border-color:var(--honey-line);background:var(--honey-soft)}
+.card p{font-size:clamp(14px,1.2vw,16px);margin:4px 0 0}
+ul{padding:0 21px 0 0;margin:7px 0}
+li{font-size:clamp(14px,1.2vw,16px);line-height:1.85;margin:5px 0;color:var(--text)}
+li::marker{color:var(--honey)}
+.callout{border-right:4px solid var(--honey);padding:12px 16px;background:var(--honey-soft);border-radius:9px;font-size:clamp(16px,1.4vw,19px);line-height:1.9;margin:13px 0 4px;color:#4a3410}
+.example{border-right:4px solid var(--blue);padding:12px 16px;background:var(--blue-soft);border-radius:9px;font-size:clamp(15px,1.3vw,18px);line-height:1.9;margin:13px 0 4px;color:var(--ink)}
+.example b{color:var(--blue)}
+.mini{font-size:clamp(13px,1.1vw,15px)!important;color:var(--blue)!important;margin-top:10px!important;padding-top:8px;border-top:1px dashed var(--blue-line)}
+.tag{display:inline-block;border:1px solid var(--honey-line);background:var(--honey-soft);color:var(--honey);border-radius:30px;padding:4px 11px;font-size:12px;margin:3px}
+.metric{font-size:clamp(30px,3.2vw,44px);font-weight:900;color:var(--honey)}
+.flow{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px 0}
+.node{background:var(--panel);border:1px solid var(--blue-line);border-radius:11px;padding:13px 16px;text-align:center;min-width:145px;line-height:1.7;color:var(--text);box-shadow:var(--shadow)}
+.node b{color:var(--honey);display:block}
+.arrow{color:var(--blue);font-size:22px;font-weight:700}
+.centered{text-align:center;justify-content:center}
+.centered .subtitle{margin-left:auto;margin-right:auto}
+.title-mark{width:70px;height:4px;background:linear-gradient(90deg,var(--blue),var(--honey));border-radius:8px;margin:12px 0 20px}
+.centered .title-mark{margin-left:auto;margin-right:auto}
+.small{font-size:13px;color:var(--muted);line-height:1.8}
+.source{font-size:12px;line-height:1.8;color:var(--muted);overflow-wrap:anywhere}
+.source a,.card .source a{color:var(--blue);text-decoration:none}
+.source a:hover{text-decoration:underline}
+.people{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:18px 0 6px}
+.person{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:11px 24px;box-shadow:var(--shadow);min-width:220px}
+.person span{display:block;font-size:13px;color:var(--muted)}
+.person b{display:block;font-size:clamp(18px,1.8vw,23px);color:var(--ink);font-weight:800}
+.top-progress{position:fixed;top:0;right:0;width:100%;height:4px;background:#dfe7f1;z-index:60}
+.top-progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--honey));transition:width .25s}
+.counter{position:fixed;top:14px;right:18px;z-index:20;color:var(--muted);font-size:12px}
+.controls{position:fixed;z-index:40;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:0;align-items:center;padding:5px;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:13px;box-shadow:0 6px 24px rgba(20,34,58,.14)}
+.controls button,.notes-toggle{border:0;border-radius:9px;padding:9px 22px;background:#eef3f9;color:var(--ink);font:600 14px "Vazirmatn",sans-serif;cursor:pointer}
+.controls button{font-size:20px!important;line-height:1;padding:10px 28px!important}
+.controls button+button{border-right:1px solid var(--line)}
+.controls button:hover,.notes-toggle:hover{background:var(--blue-soft);color:var(--blue)}
+.controls button:focus-visible,.notes-toggle:focus-visible,.notes-close:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.fs-btn{position:fixed;top:10px;left:14px;z-index:50;width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.95);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+.fs-btn:hover{background:var(--blue-soft);color:var(--blue)}
+.fs-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.fs-btn svg{width:20px;height:20px}
+.fs-btn .i-exit{display:none}
+.fs-on .fs-btn .i-enter{display:none}
+.fs-on .fs-btn .i-exit{display:block}
+.notes-toggle{position:fixed;z-index:45;bottom:18px;right:18px;border:1px solid var(--line);padding:8px 12px;font-size:12px;background:#fff}
+.notes-panel{position:fixed;z-index:55;right:0;left:0;bottom:0;min-height:170px;max-height:30vh;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(20,34,58,.12);padding:18px 7vw 24px;overflow-y:auto;transform:translateY(105%);transition:transform .3s ease}
+.notes-panel.open{transform:translateY(0)}
+.notes-panel h3{color:var(--honey)}
+.notes-panel p{font-size:14px}
+.notes-close{position:absolute;left:18px;top:12px;background:#eef3f9;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:4px 9px;font:inherit;cursor:pointer}
+.notes{display:none}
+@media(max-width:700px){.grid,.grid.three,.grid.four{grid-template-columns:1fr}.slide{padding:5vh 5vw 125px}.slide-inner{width:90vw}.controls{bottom:10px}.controls button{padding:8px 17px}.notes-toggle{bottom:68px;right:12px}}
+@media print{@page{size:A4 landscape;margin:8mm}html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.slide{display:flex!important;min-height:194mm;height:194mm;width:281mm;overflow:hidden;padding:8mm 12mm 10mm;page-break-after:always;break-after:page}.slide-inner{width:100%;max-width:none}.slide:last-child{page-break-after:auto}.controls,.notes-toggle,.fs-btn,.counter,.top-progress,.notes-panel{display:none!important}}
+</style>
+</head>
+<body>
+<main id="deck">
+
+<!-- اسلاید ۱: عنوان. برای تغییر نام‌ها فقط دو مورد داخل .person را عوض کنید -->
+<section class="slide active centered"><div class="slide-inner">
+<div class="kicker">رایانش امن • هانی‌پات</div>
+<h1>هانی‌پات؛ <span class="accent">تله‌ای برای شناخت مهاجم</span></h1>
+<div class="title-mark"></div>
+<p class="subtitle">«هانی‌پات» یعنی «ظرف عسل». یک سیستم ساختگی است که عمداً برای جلب توجه هکرها ساخته می‌شود تا ببینیم آن‌ها چه کار می‌کنند.</p>
+<div class="callout">ایده اصلی: به‌جای فقط بیرون کردن مهاجم، از رفتار او هم یاد بگیریم.</div>
+<div class="people">
+<div class="person"><span>ارائه‌دهنده</span><b>علی خان محمدی هزاوه</b></div>
+<div class="person"><span>استاد</span><b>دکتر سید مرتضی موسوی</b></div>
+</div>
+<aside class="notes">در شروع بگویید: امروز می‌خواهیم ببینیم هانی‌پات چیست، چرا استفاده می‌شود و چه فایده‌ها و خطرهایی دارد. می‌توانید با یک سؤال شروع کنید: خرس‌ها را چه چیزی جذب می‌کند؟ عسل! هانی‌پات هم همین کار را با هکرها می‌کند.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱ • مقدمه</div><h2>چرا به هانی‌پات نیاز داریم؟</h2>
+<div class="grid three">
+<div class="card"><h3>تهدیدها همیشه آشکار نیستند</h3><p>گاهی نمی‌دانیم مهاجم دنبال چه چیزی است.</p></div>
+<div class="card"><h3>فقط جلوگیری کافی نیست</h3><p>شناخت روش و هدف مهاجم هم مهم است.</p></div>
+<div class="card gold"><h3>راهی برای یادگیری</h3><p>هانی‌پات به ما کمک می‌کند رفتار مشکوک را ببینیم.</p></div>
+</div>
+<div class="example"><b>مثال ساده:</b> فرض کنید شب‌ها کسی وارد مدرسه می‌شود. فقط عوض کردن قفل کافی نیست. اگر بفهمیم او از کجا وارد می‌شود و دنبال چیست، می‌توانیم مدرسه را خیلی بهتر امن کنیم.</div>
+<p class="small">مهاجم (هکر) یعنی کسی که بدون اجازه تلاش می‌کند وارد یک سیستم شود.</p>
+<div class="callout">هانی‌پات یک ابزار کمکی برای بهتر شناختن تهدیدهاست؛ جایگزین ابزارهای امنیتی دیگر نیست.</div>
+<aside class="notes">توضیح دهید که امنیت فقط جلوگیری از حمله نیست. باید تلاش‌های مشکوک را هم بشناسیم و از آن‌ها درس بگیریم. مثال مدرسه را تعریف کنید و بگویید قفل خوب لازم است، اما شناخت راه و هدف نفوذکننده هم لازم است.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۲ • تعریف</div><h2>هانی‌پات چیست؟</h2>
+<div class="card gold"><p class="lead">هانی‌پات یک سیستم، سرویس یا فایل ساختگی است که شبیه یک دارایی واقعی به نظر می‌رسد. کاربر عادی دلیلی برای سر زدن به آن ندارد؛ پس هر ورود به آن مشکوک است.</p></div>
+<div class="grid three">
+<div class="card"><h3>جلب توجه</h3><p>مهاجم ممکن است به آن وصل شود یا آن را بررسی کند.</p></div>
+<div class="card"><h3>مشاهده</h3><p>ما فعالیت او را ثبت می‌کنیم.</p></div>
+<div class="card"><h3>یادگیری</h3><p>از اطلاعات به‌دست‌آمده برای بهتر کردن امنیت استفاده می‌کنیم.</p></div>
+</div>
+<div class="example"><b>مثال ساده:</b> روی یک کامپیوتر ساختگی، پوشه‌ای به نام «رمزهای مهم» می‌گذاریم که هیچ اطلاعات واقعی ندارد. اگر کسی آن را باز کند، می‌فهمیم مشکوک است؛ درست مثل عسلی که خرس را به سمت خود می‌کشد.</div>
+<aside class="notes">نکته کلیدی: هانی‌پات هیچ کاربرد عادی ندارد. بنابراین هر کسی که سراغش می‌رود، احتمالاً کار مشکوکی می‌کند. این همان چیزی است که تشخیص را آسان می‌کند.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۳ • یک مثال از دنیای واقعی</div><h2>دوچرخه طعمه؛ شبیه هانی‌پات</h2>
+<p class="lead">در بعضی شهرها، پلیس عمداً یک دوچرخه یا خودروی «طعمه» را در خیابان می‌گذارد. داخل آن یک ردیاب مخفی (GPS) هست. اگر دزدی آن را ببرد، پلیس می‌فهمد او کجا رفته و چطور کار می‌کند.</p>
+<div class="grid three">
+<div class="card"><h3>دوچرخه طعمه</h3><p>همان نقش هانی‌پات را دارد: ساختگی است و برای جلب توجه گذاشته شده.</p></div>
+<div class="card"><h3>ردیاب مخفی</h3><p>همان ثبت فعالیت است: هر کاری که انجام می‌شود دیده می‌شود.</p></div>
+<div class="card"><h3>دزد</h3><p>همان مهاجم است: فکر می‌کند به یک هدف واقعی رسیده است.</p></div>
+</div>
+<div class="callout">نکته مهم: دوچرخه طعمه، دوچرخه اصلی هیچ‌کس نیست. هانی‌پات هم باید از سیستم‌های واقعی جدا باشد تا اگر کسی به آن حمله کرد، چیز مهمی از دست نرود.</div>
+<aside class="notes">این مثال را آرام توضیح دهید: دوچرخه طعمه دزد را جلب می‌کند و ردیاب رفتار او را نشان می‌دهد. هانی‌پات هم همین‌طور است. تأکید کنید که هانی‌پات و دوچرخه طعمه هر دو ساختگی و جدا از دارایی واقعی هستند.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۴ • یک داستان واقعی</div><h2>نبرد ماراتن؛ پیروزی با نقشه</h2>
+<p class="lead">حدود سال ۴۹۰ پیش از میلاد، ارتش بزرگ هخامنشی در دشت ماراتن با ارتش کوچک‌تر آتن روبه‌رو شد. طبق روایت هرودوت، یونانی‌ها وسط صف خود را نازک و دو طرف را قوی کردند.</p>
+<div class="flow">
+<div class="node"><b>۱. صف نقشه‌دار</b>وسط ضعیف، دو طرف قوی</div><span class="arrow">←</span>
+<div class="node"><b>۲. دشمن جلو می‌آید</b>وسط عقب می‌رود و دشمن فکر می‌کند دارد می‌برد</div><span class="arrow">←</span>
+<div class="node"><b>۳. دو طرف پیروز می‌شوند</b>جناح‌ها دشمنِ مقابل خود را شکست می‌دهند</div><span class="arrow">←</span>
+<div class="node"><b>۴. دشمن گیر می‌افتد</b>دو طرف به هم می‌رسند و به نیروهای وسط حمله می‌کنند</div>
+</div>
+<div class="callout">درس برای ما: قدرت فقط تعداد سرباز و سلاح نیست؛ نقشه است. «ضعف ظاهری» وسط صف، دشمن را به جایی کشید که فرمانده انتخاب کرده بود؛ هانی‌پات هم همین کار را می‌کند.</div>
+<p class="small">مورخان درباره اینکه عقب رفتن وسط صف از قبل برنامه‌ریزی شده بود یا نه، اختلاف دارند؛ و ماراتن هانی‌پات نبود. ما فقط از آن درس استراتژی می‌گیریم.</p>
+<p class="source">منبع روایت: Herodotus, <i>Histories</i>, Book VI, 111–113.</p>
+<aside class="notes">داستان را کوتاه تعریف کنید: یونانی‌ها وسط صف را نازک کردند و دو طرف را قوی. وسط عقب رانده شد و دشمن جلو آمد، اما دو طرف پیروز شدند و به هم پیوستند. بعد بگویید: امنیت هم همین است؛ فقط ابزار نیست، نقشه و فکر است. تأکید کنید که این فقط یک مثال آموزشی است و مورخان درباره برنامه‌ریزی‌شده بودن عقب‌نشینی وسط اختلاف دارند.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۵ • میدان نبرد امنیت</div><h2>دو فرمانده، دو ارتش، یک میدان</h2>
+<div class="grid two">
+<div class="card gold"><h3>فرمانده دفاع (متخصص امنیت)</h3>
+<ul><li>فایروال: مثل دیوار قلعه که ورود را کنترل می‌کند</li><li>آنتی‌ویروس: مثل نگهبان که برنامه‌های خطرناک را پیدا می‌کند</li><li>سیستم هشدار: مثل برج دیده‌بانی</li><li><strong>سلاح مخفی: هانی‌پات</strong></li></ul></div>
+<div class="card"><h3>فرمانده حمله (هکر)</h3>
+<ul><li>ابزار اسکن: پیدا کردن درهای باز</li><li>حدس زدن رمز عبور</li><li>بدافزار: برنامه‌ای برای آسیب زدن</li><li>فریب دادن آدم‌ها (مثلاً پیام جعلی)</li></ul></div>
+</div>
+<div class="flow">
+<div class="node"><b>ضعف ظاهری</b>هانی‌پات مثل وسط ضعیف صف</div><span class="arrow">←</span>
+<div class="node"><b>هکر وارد می‌شود</b>فکر می‌کند برنده است</div><span class="arrow">←</span>
+<div class="node"><b>همه حرکاتش ثبت می‌شود</b>روش و ابزارش را می‌بینیم</div><span class="arrow">←</span>
+<div class="node"><b>ما برنده می‌شویم</b>دفاع را قوی می‌کنیم و رد او را می‌گیریم</div>
+</div>
+<div class="callout">این یک جنگ فکرهاست: برنده کسی است که دشمن را بهتر بشناسد و او را به جایی بکشاند که خودش انتخاب کرده است.</div>
+<p class="small">پیدا کردن خود هکر همیشه آسان نیست؛ او ممکن است پشت چند کامپیوتر دیگر پنهان شود. این کار معمولاً با کمک متخصصان و مراجع قانونی انجام می‌شود و ما نباید خودمان به او حمله کنیم.</p>
+<aside class="notes">دو فرمانده را معرفی کنید: متخصص امنیت و هکر. هر کدام ارتش و ابزار خودشان را دارند. فرمانده دفاع هانی‌پات را مثل همان وسط ضعیف صف در ماراتن به کار می‌برد تا هکر را به محیطی بکشاند که همه حرکاتش دیده و ثبت می‌شود. از آن اطلاعات برای قوی‌تر کردن دفاع و کمک به ردیابی استفاده می‌شود. تأکید کنید که پیدا کردن شخص هکر کار ساده‌ای نیست.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۶ • انواع بر اساس میزان تعامل</div><h2>دو نوع اصلی هانی‌پات</h2>
+<div class="grid two">
+<div class="card"><h3>تعامل کم</h3><p>فقط ظاهر و پاسخ‌های ساده یک سیستم را نشان می‌دهد.</p><ul><li>ساخت و نگهداری آسان‌تر</li><li>خطر کمتر</li><li>اطلاعات محدودتر</li></ul><p class="mini">مثل ماکت جلوی یک مغازه: فقط ظاهرش را می‌بینی و داخلش خالی است.</p></div>
+<div class="card gold"><h3>تعامل زیاد</h3><p>محیطی شبیه یک سیستم واقعی فراهم می‌کند.</p><ul><li>اطلاعات بیشتر درباره رفتار مهاجم</li><li>هزینه و مراقبت بیشتر</li><li>نیاز به محافظت قوی‌تر</li></ul><p class="mini">مثل یک مغازه ساختگی کامل که می‌شود داخلش گشت.</p></div>
+</div>
+<div class="callout">هیچ‌کدام همیشه بهتر نیست؛ انتخاب به هدف و امکانات سازمان بستگی دارد.</div>
+<aside class="notes">تعامل کم ساده‌تر و کم‌خطرتر است. تعامل زیاد اطلاعات بیشتری می‌دهد، اما باید با دقت بیشتری کنترل شود، چون مهاجم کارهای بیشتری می‌تواند در آن انجام دهد.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۷ • دسته‌بندی</div><h2>هانی‌پات‌ها برای چه کاری استفاده می‌شوند؟</h2>
+<div class="grid four">
+<div class="card"><h3>سروری</h3><p>منتظر می‌ماند تا مهاجم خودش بیاید.</p><p class="mini">مثل ماهیگیری که قلاب می‌اندازد و صبر می‌کند.</p></div>
+<div class="card"><h3>کاربری</h3><p>خودش سراغ وب‌سایت‌ها یا فایل‌های مشکوک می‌رود و آن‌ها را بررسی می‌کند.</p><p class="mini">مثل بازرسی که به یک مغازه مشکوک سر می‌زند.</p></div>
+<div class="card"><h3>پژوهشی</h3><p>برای مطالعه روش‌ها و رفتار مهاجمان است.</p><p class="mini">مثل دانشمندی که رفتار یک حیوان را زیر نظر می‌گیرد.</p></div>
+<div class="card"><h3>سازمانی</h3><p>برای کمک به تشخیص فعالیت مشکوک در شرکت یا سازمان است.</p><p class="mini">مثل دزدگیر ساختمان.</p></div>
+</div>
+<div class="callout">دو سؤال جدا داریم: «چه چیزی را تقلید کنیم؟» (سروری یا کاربری) و «برای چه هدفی؟» (پژوهش یا سازمان).</div>
+<aside class="notes">به زبان ساده بگویید: بعضی هانی‌پات‌ها منتظر می‌مانند تا مهاجم بیاید؛ بعضی خودشان سراغ سایت‌های مشکوک می‌روند. از طرف دیگر، بعضی برای تحقیق ساخته می‌شوند و بعضی برای محافظت از یک سازمان.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۸ • Honeynet</div><h2>Honeynet چیست؟</h2>
+<p class="lead">Honeynet یعنی چند هانی‌پات که در یک محیط کنار هم قرار گرفته‌اند.</p>
+<div class="flow">
+<div class="node"><b>سرور ساختگی</b>مثلاً وب‌سایت</div><span class="arrow">+</span>
+<div class="node"><b>کامپیوتر ساختگی</b>مثلاً سیستم کارمند</div><span class="arrow">+</span>
+<div class="node"><b>پایگاه داده ساختگی</b>مثلاً اطلاعات نمونه</div>
+</div>
+<div class="card gold"><h3>چرا چند سیستم؟</h3><p>چون می‌توانیم ببینیم مهاجم به کدام بخش‌ها سر می‌زند و چه کارهایی انجام می‌دهد.</p></div>
+<div class="example"><b>مثال ساده:</b> یک هانی‌پات مثل یک خانه ماکت است؛ یک Honeynet مثل یک محله ماکت کامل. می‌بینیم مهاجم اول سراغ کدام ساختمان می‌رود و بعد کجا می‌رود.</div>
+<p class="small">سرور: کامپیوتری که یک وب‌سایت یا سرویس را در اختیار بقیه می‌گذارد. پایگاه داده: جایی که اطلاعات منظم ذخیره می‌شود.</p>
+<div class="callout">Honeynet یک مجموعه از هانی‌پات‌هاست؛ T-Pot هم ابزاری است که چند هانی‌پات را در کنار هم اجرا می‌کند.</div>
+<aside class="notes">به‌جای یک سیستم ساختگی، چند سیستم داریم تا رفتار مهاجم را در بخش‌های مختلف ببینیم. حتماً این محیط باید از سیستم‌های واقعی جدا باشد.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۹ • امنیت و ثبت اطلاعات</div><h2>دو کار مهم: کنترل و ثبت</h2>
+<div class="grid two">
+<div class="card gold"><h3>کنترل فعالیت</h3><p>نمی‌گذاریم هانی‌پات برای آسیب زدن به دیگران استفاده شود.</p><ul><li>محدود کردن ارتباط با بیرون</li><li>جدا نگه داشتن از سیستم‌های واقعی</li><li>امکان خاموش کردن سریع</li></ul></div>
+<div class="card"><h3>ثبت فعالیت</h3><p>آنچه در هانی‌پات اتفاق می‌افتد ثبت می‌شود.</p><ul><li>زمان ورود</li><li>کارهایی که انجام شده</li><li>فایل‌ها یا اطلاعاتی که باز شده‌اند</li></ul></div>
+</div>
+<div class="example"><b>مثال ساده:</b> مثل یک آزمایشگاه با دیوار شیشه‌ای و دوربین. هرچه داخل اتفاق می‌افتد دیده و ثبت می‌شود، اما در بسته است و چیزی به بیرون نمی‌رسد.</div>
+<div class="callout">باید هم رفتار مشکوک را ببینیم و هم مطمئن شویم هانی‌پات خطری برای دیگران ایجاد نمی‌کند.</div>
+<aside class="notes">مثال بزنید: اگر کسی از هانی‌پات بخواهد به یک سایت دیگر حمله کند، باید بتوانیم جلوی ارتباط را بگیریم. در عین حال، فعالیت‌های او را برای بررسی ثبت کنیم.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱۰ • طراحی خوب</div><h2>یک هانی‌پات خوب چه ویژگی‌هایی دارد؟</h2>
+<div class="grid two">
+<div class="card"><h3>باورپذیر باشد</h3><p>ظاهر آن شبیه یک سیستم واقعی باشد.</p></div>
+<div class="card"><h3>جای مناسبی باشد</h3><p>در جایی قرار بگیرد که فعالیت مشکوک ممکن است رخ دهد.</p></div>
+<div class="card"><h3>فعالیت را ثبت کند</h3><p>بتوانیم بفهمیم چه اتفاقی افتاده است.</p></div>
+<div class="card"><h3>به ما کمک کند</h3><p>اطلاعات آن برای بهتر کردن امنیت مفید باشد.</p></div>
+</div>
+<div class="example"><b>مثال ساده:</b> ماهیگیر اگر از کرم پلاستیکی خیلی بد استفاده کند، ماهی نمی‌آید. اگر یک کامپیوتر ساختگی هیچ فایل و برنامه‌ای نداشته باشد، مهاجم زود می‌فهمد که تله است.</div>
+<aside class="notes">یک هانی‌پات خوب فقط نباید شبیه سیستم واقعی باشد؛ باید اطلاعات مفیدی بدهد و تیم امنیتی بتواند از آن استفاده کند.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱۱ • راه‌اندازی</div><h2>برای راه‌اندازی چه کار می‌کنیم؟</h2>
+<div class="grid three">
+<div class="card"><h3>۱. هدف را مشخص می‌کنیم</h3><p>می‌خواهیم چه نوع فعالیتی را بشناسیم؟</p></div>
+<div class="card"><h3>۲. نوع تله را انتخاب می‌کنیم</h3><p>مثلاً سرور، فایل یا حساب ساختگی.</p></div>
+<div class="card"><h3>۳. محیط را آماده می‌کنیم</h3><p>آن را از سیستم‌های واقعی جدا می‌کنیم.</p></div>
+<div class="card"><h3>۴. فعالیت را ثبت می‌کنیم</h3><p>ورودها و کارهای انجام‌شده را ذخیره می‌کنیم.</p></div>
+<div class="card"><h3>۵. نتیجه را بررسی می‌کنیم</h3><p>از اطلاعات برای بهتر کردن امنیت استفاده می‌کنیم.</p></div>
+</div>
+<div class="example"><b>مثال ساده:</b> یک مدرسه می‌خواهد بفهمد چه کسانی سعی می‌کنند وارد سرور آن شوند. هدف: شناخت تلاش‌های ورود. نوع: یک سرور ساختگی. محیط: جدا از شبکه اصلی مدرسه. ثبت: همه ورودها. بررسی: هر هفته نتیجه را می‌خوانیم.</div>
+<aside class="notes">این پنج مرحله را به‌عنوان روند کلی معرفی کنید. لازم نیست وارد جزئیات فنی نصب و تنظیمات شوید.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱۲ • ابزارها</div><h2>چند نمونه از ابزارهای هانی‌پات</h2>
+<div class="grid three">
+<div class="card"><h3>Cowrie</h3><p>یک ورودی ساختگی شبیه محیط لینوکس است و کارهای مهاجم را ثبت می‌کند.</p><span class="tag">ثبت تلاش‌های ورود</span><p class="mini">مثل در ورودی ساختگی که پشت آن دوربین دارد.</p><p class="source"><a href="https://cowrie.readthedocs.io/" target="_blank" rel="noopener">وب‌سایت Cowrie</a></p></div>
+<div class="card"><h3>Dionaea</h3><p>تلاش برای اتصال به سرویس‌های مختلف را می‌بیند و نمونه‌های بدافزار را جمع می‌کند.</p><span class="tag">بررسی بدافزار</span><p class="mini">مثل تله موش که موش را نگه می‌دارد تا بررسی‌اش کنیم. (بدافزار: برنامه‌ای که برای آسیب زدن ساخته شده.)</p><p class="source"><a href="https://github.com/DinoTools/dionaea" target="_blank" rel="noopener">صفحه Dionaea</a></p></div>
+<div class="card"><h3>T-Pot</h3><p>چند هانی‌پات را در یک مجموعه اجرا می‌کند و نتیجه را نمایش می‌دهد.</p><span class="tag">چند هانی‌پات کنار هم</span><p class="mini">مثل یک اتاق کنترل که تصویر چند دوربین را با هم نشان می‌دهد.</p><p class="source"><a href="https://github.com/telekom-security/tpotce" target="_blank" rel="noopener">صفحه T-Pot</a></p></div>
+</div>
+<aside class="notes">فقط کاربرد کلی هر ابزار را بگویید. Cowrie برای مشاهده تلاش‌های ورود، Dionaea برای سرویس‌ها و بدافزار، و T-Pot برای اجرای چند هانی‌پات در کنار هم است.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱۳ • محدودیت‌ها</div><h2>آیا مهاجم می‌تواند تله را تشخیص دهد؟</h2>
+<div class="grid two">
+<div class="card"><h3>بله، گاهی</h3><p>ممکن است متوجه شود سیستم واقعی نیست یا رفتار آن طبیعی به نظر نمی‌رسد.</p></div>
+<div class="card"><h3>پس چه می‌شود؟</h3><p>ممکن است از آن دوری کند و اطلاعات کمتری به ما برسد.</p></div>
+</div>
+<div class="example"><b>مثال ساده:</b> یک فروشگاه ماکت که همه چیزش مقوایی است. دزد باهوش از همان در اول می‌فهمد که واقعی نیست و دور می‌شود.</div>
+<div class="callout">به همین دلیل، هانی‌پات باید تا حد ممکن طبیعی و درست طراحی شود؛ اما هیچ تله‌ای کامل نیست.</div>
+<aside class="notes">توضیح دهید که مهاجم ممکن است ساختگی بودن محیط را تشخیص دهد. این یکی از محدودیت‌های هانی‌پات است.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱۴ • رقابت و یادگیری</div><h2>مدافع و مهاجم هر دو یاد می‌گیرند</h2>
+<div class="grid two">
+<div class="card gold"><h3>مدافع</h3><p>تلاش می‌کند تله را طبیعی‌تر کند و از اطلاعات آن برای بهتر کردن امنیت استفاده کند.</p></div>
+<div class="card"><h3>مهاجم</h3><p>تلاش می‌کند سیستم‌های ساختگی را تشخیص دهد و وقت خود را تلف نکند.</p></div>
+</div>
+<div class="example"><b>مثال ساده:</b> مثل بازی گربه و موش. هر بار که یک طرف روش تازه‌ای پیدا می‌کند، طرف دیگر هم باید راه جدیدی یاد بگیرد.</div>
+<div class="callout">این یک رقابت دائمی است؛ هر طرف روش‌های خود را بهتر می‌کند.</div>
+<aside class="notes">پیام این اسلاید ساده است: هانی‌پات نیاز به بازبینی دارد، چون مهاجمان هم روش‌های خود را تغییر می‌دهند.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱۵ • یک نمونه پژوهشی</div><h2>SMASH؛ ایده هدایت فعالیت مشکوک</h2>
+<p class="lead">یک پژوهش در سال ۲۰۲۵ چارچوبی به نام SMASH معرفی کرده است. این چارچوب هانی‌پات را با مدیریت هوشمند شبکه ترکیب می‌کند تا راه‌اندازی هانی‌پات‌ها خودکار شود و رفتار مهاجم، به‌ویژه تهدیدهای داخلی، بهتر دیده شود.</p>
+<div class="flow">
+<div class="node"><b>فعالیت مشکوک</b>ورود یا بررسی غیرعادی</div><span class="arrow">←</span>
+<div class="node"><b>مدیریت شبکه</b>انتخاب مسیر</div><span class="arrow">←</span>
+<div class="node"><b>هانی‌پات</b>مشاهده فعالیت</div>
+</div>
+<div class="example"><b>مثال ساده:</b> مثل نگهبان فرودگاه که مسافر مشکوک را به اتاق بازرسی راهنمایی می‌کند، به‌جای اینکه بگذارد در سالن اصلی بچرخد. تهدید داخلی یعنی خطری که از طرف کسی در داخل خود سازمان می‌آید.</div>
+<p class="source">d’Ambrosio, N., Lista, C., Perrone, G., Romano, S. P. (2025), “SMASH: An SDN-MTD framework for efficient honeypot deployment and insider threat mitigation”, <i>Computer Networks</i>, 269. <a href="https://doi.org/10.1016/j.comnet.2025.111327" target="_blank" rel="noopener">مقاله</a></p>
+<aside class="notes">در این اسلاید وارد جزئیات SDN و MTD نشوید. فقط بگویید این پژوهش درباره راه‌اندازی خودکار هانی‌پات‌ها و هدایت فعالیت‌های مشکوک به محیط هانی‌پات است.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱۶ • هوش مصنوعی</div><h2>هوش مصنوعی چه کمکی می‌کند؟</h2>
+<div class="grid two">
+<div class="card gold"><h3>کمک‌های ممکن</h3><ul><li>مرتب کردن گزارش‌ها</li><li>پیدا کردن رفتارهای تکراری</li><li>خلاصه کردن اتفاقات</li></ul></div>
+<div class="card"><h3>نقش انسان</h3><ul><li>بررسی نتیجه‌ها</li><li>تصمیم درباره خطرها</li><li>انتخاب واکنش مناسب</li></ul></div>
+</div>
+<div class="example"><b>مثال ساده:</b> معلمی هزار برگه امتحان دارد. یک ابزار برگه‌ها را مرتب می‌کند و پاسخ‌های مشابه را کنار هم می‌گذارد، اما نمره نهایی را خود معلم می‌دهد.</div>
+<div class="callout">هوش مصنوعی می‌تواند در بررسی اطلاعات کمک کند، اما تصمیم نهایی باید با مسئول امنیتی باشد.</div>
+<aside class="notes">توضیح دهید که هوش مصنوعی می‌تواند حجم زیادی از گزارش‌ها را سریع‌تر بررسی کند؛ اما انسان باید نتیجه را کنترل کند و تصمیم بگیرد.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱۷ • خطرها</div><h2>چه نکاتی را باید رعایت کنیم؟</h2>
+<div class="grid two">
+<div class="card"><h3>حفاظت از اطلاعات</h3><p>اطلاعات ثبت‌شده باید امن نگهداری شود.</p></div>
+<div class="card"><h3>جلوگیری از آسیب</h3><p>هانی‌پات نباید برای حمله به دیگران استفاده شود.</p></div>
+<div class="card"><h3>جداسازی</h3><p>باید از سیستم‌های واقعی سازمان جدا باشد.</p></div>
+<div class="card"><h3>قوانین و حریم خصوصی</h3><p>ثبت و نگهداری اطلاعات باید با قوانین هماهنگ باشد.</p></div>
+</div>
+<div class="example"><b>مثال ساده:</b> دوربین مدار بسته را باید طبق قانون نصب کرد و فیلم‌هایش را در جای امن نگه داشت. اطلاعات هانی‌پات هم همین‌طور است.</div>
+<div class="callout">هانی‌پات هم باید امن باشد؛ وگرنه ممکن است خودش به یک مشکل تبدیل شود.</div>
+<aside class="notes">بگویید که هانی‌پات باید جدا و کنترل‌شده باشد و اطلاعات افراد بدون دلیل و مجوز جمع‌آوری نشود.</aside>
+</div></section>
+
+<section class="slide centered"><div class="slide-inner">
+<div class="kicker">۱۸ • جمع‌بندی</div><h2>سه نکته اصلی درباره هانی‌پات</h2>
+<div class="grid three">
+<div class="card"><div class="metric">۱</div><h3>شناخت</h3><p>رفتار مشکوک را مشاهده می‌کنیم.</p></div>
+<div class="card"><div class="metric">۲</div><h3>یادگیری</h3><p>از فعالیت‌ها اطلاعات به دست می‌آوریم.</p></div>
+<div class="card"><div class="metric">۳</div><h3>بهبود امنیت</h3><p>از آموخته‌ها برای محافظت بهتر استفاده می‌کنیم.</p></div>
+</div>
+<div class="title-mark"></div>
+<p class="subtitle">هانی‌پات مثل یک ظرف عسل است: مهاجم را جذب می‌کند تا ما او را بشناسیم. اما جایگزین ابزارهای امنیتی دیگر نیست.</p>
+<div class="callout">هدف نهایی فقط ساختن یک تله نیست؛ هدف، یاد گرفتن و امن‌تر کردن سیستم‌هاست.</div>
+<aside class="notes">ارائه را با این سه کلمه تمام کنید: شناخت، یادگیری و بهبود امنیت.</aside>
+</div></section>
+
+<section class="slide"><div class="slide-inner">
+<div class="kicker">۱۹ • منابع</div><h2>منابع اصلی</h2>
+<div class="grid two">
+<div class="card"><h3>کتاب و راهنما</h3>
+<p class="source">Herodotus, <i>Histories</i>, Book VI, 111–117 (نبرد ماراتن).</p>
+<p class="source">Spitzner, L. (2002). <i>Honeypots: Tracking Hackers</i>. Addison-Wesley.</p>
+<p class="source">Provos, N. &amp; Holz, T. (2007). <i>Virtual Honeypots: From Botnet Tracking to Intrusion Detection</i>. Addison-Wesley.</p>
+<p class="source">Scarfone, K. &amp; Mell, P. (2007). NIST SP 800-94, <i>Guide to Intrusion Detection and Prevention Systems (IDPS)</i>. <a href="https://doi.org/10.6028/NIST.SP.800-94" target="_blank" rel="noopener">DOI</a></p>
+</div>
+<div class="card"><h3>ابزارها و پژوهش</h3>
+<p class="source">Cowrie: <a href="https://cowrie.readthedocs.io/" target="_blank" rel="noopener">مستندات</a></p>
+<p class="source">Dionaea: <a href="https://github.com/DinoTools/dionaea" target="_blank" rel="noopener">صفحه پروژه</a></p>
+<p class="source">T-Pot: <a href="https://github.com/telekom-security/tpotce" target="_blank" rel="noopener">صفحه پروژه</a></p>
+<p class="source">مقاله SMASH (2025): <a href="https://doi.org/10.1016/j.comnet.2025.111327" target="_blank" rel="noopener">DOI</a></p>
+</div></div>
+<aside class="notes">این اسلاید برای نشان دادن منابع استفاده‌شده است. لازم نیست همه منابع را با صدای بلند بخوانید.</aside>
+</div></section>
+
+<section class="slide centered"><div class="slide-inner">
+<div class="kicker">۲۰ • پرسش و پاسخ</div><h1>سپاس از توجه شما</h1>
+<div class="title-mark"></div>
+<p class="subtitle">پرسش‌ها و گفت‌وگو</p>
+<span class="tag">شناخت • یادگیری • امنیت</span>
+<div class="people">
+<div class="person"><span>ارائه‌دهنده</span><b>علی رضایی</b></div>
+<div class="person"><span>استاد</span><b>دکتر محمد احمدی</b></div>
+</div>
+<aside class="notes">برای شروع پرسش‌وپاسخ بپرسید: اگر قرار بود یک هانی‌پات در یک شرکت بسازید، آن را شبیه چه چیزی طراحی می‌کردید؟</aside>
+</div></section>
+</main>
+
+<div class="top-progress"><div class="bar" id="progressBar"></div></div>
+<button class="fs-btn" id="fsBtn" type="button" onclick="toggleFullscreen()" aria-label="تمام‌صفحه" title="تمام‌صفحه (F)">
+<svg class="i-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+<svg class="i-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>
+</button>
+<div class="counter" id="counter">01 / 21</div>
+<div class="controls"><button type="button" onclick="prevSlide()" aria-label="اسلاید قبلی" title="قبلی">↑</button><button type="button" onclick="nextSlide()" aria-label="اسلاید بعدی" title="بعدی">↓</button></div>
+<button class="notes-toggle" type="button" onclick="toggleNotes()">یادداشت سخنران</button>
+<aside class="notes-panel" id="notesPanel" aria-live="polite">
+<button class="notes-close" type="button" onclick="toggleNotes()">بستن</button>
+<h3>یادداشت سخنران</h3><p id="notesText">برای این اسلاید یادداشتی ثبت نشده است.</p>
+</aside>
+<script>
+const slides=[...document.querySelectorAll(".slide")];let current=0;const notesPanel=document.getElementById("notesPanel");
+function showSlide(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle("active",i===current));document.getElementById("counter").textContent=String(current+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");document.getElementById("progressBar").style.width=((current+1)/slides.length*100)+"%";if(notesPanel.classList.contains("open"))updateNotes()}
+function toggleFullscreen(){const d=document,el=d.documentElement;const on=d.fullscreenElement||d.webkitFullscreenElement;try{if(on){(d.exitFullscreen||d.webkitExitFullscreen).call(d)}else{(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}}catch(e){}}
+function syncFs(){document.body.classList.toggle("fs-on",!!(document.fullscreenElement||document.webkitFullscreenElement))}
+document.addEventListener("fullscreenchange",syncFs);document.addEventListener("webkitfullscreenchange",syncFs);
+if(!(document.fullscreenEnabled||document.webkitFullscreenEnabled))document.getElementById("fsBtn").style.display="none";
+function nextSlide(){showSlide(current+1)}function prevSlide(){showSlide(current-1)}
+function updateNotes(){const note=slides[current].querySelector(".notes");document.getElementById("notesText").textContent=note?note.textContent.trim():"برای این اسلاید یادداشتی ثبت نشده است."}
+function toggleNotes(){const opening=!notesPanel.classList.contains("open");if(opening)updateNotes();notesPanel.classList.toggle("open",opening)}
+document.addEventListener("keydown",e=>{if(["ArrowDown","PageDown"," ","ArrowLeft"].includes(e.key)){e.preventDefault();nextSlide()}else if(["ArrowUp","PageUp","ArrowRight"].includes(e.key)){e.preventDefault();prevSlide()}else if(e.key==="f"||e.key==="F"){toggleFullscreen()}else if(e.key==="Home"){showSlide(0)}else if(e.key==="End"){showSlide(slides.length-1)}else if(e.key==="Escape")notesPanel.classList.remove("open")});
+let touchStartX=0;document.addEventListener("touchstart",e=>touchStartX=e.changedTouches[0].screenX,{passive:true});document.addEventListener("touchend",e=>{const d=e.changedTouches[0].screenX-touchStartX;if(Math.abs(d)>65)d<0?nextSlide():prevSlide()},{passive:true});showSlide(0);
+</script>
+</body></html>
