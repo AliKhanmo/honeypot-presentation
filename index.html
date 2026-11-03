@@ -13,52 +13,53 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-fa
 body{background:linear-gradient(180deg,#fbfcfe 0%,#f1f5fa 100%)}
 .slide{display:none;position:relative;width:100%;min-height:100vh;padding:5vh 6vw 13vh;overflow-y:auto}
 .slide.active{display:flex;flex-direction:column}
-.slide-inner{width:min(1100px,90vw);margin:auto;display:flex;flex-direction:column}
-.kicker{font-size:13px;font-weight:800;color:var(--honey);margin-bottom:10px}
+.slide-inner{width:min(1180px,92vw);margin:auto;display:flex;flex-direction:column}
+.kicker{font-size:15px;font-weight:800;color:var(--honey);margin-bottom:10px}
 .kicker:before{content:"◆";font-size:9px;margin-left:9px;color:var(--blue)}
-h1{font-size:clamp(32px,4.5vw,58px);line-height:1.4;margin:0 0 16px;font-weight:900;color:var(--ink)}
-h2{font-size:clamp(25px,3vw,39px);line-height:1.5;margin:0 0 18px;font-weight:800;color:var(--ink)}
-h3{font-size:clamp(17px,1.5vw,21px);margin:0 0 7px;color:var(--ink)}
-p,.lead{font-size:clamp(15px,1.25vw,18px);line-height:1.9;color:var(--text);margin:7px 0}
+h1{font-size:clamp(36px,5vw,68px);line-height:1.4;margin:0 0 16px;font-weight:900;color:var(--ink)}
+h2{font-size:clamp(30px,3.5vw,48px);line-height:1.5;margin:0 0 18px;font-weight:800;color:var(--ink)}
+h3{font-size:clamp(20px,2vw,28px);margin:0 0 7px;color:var(--ink)}
+p,.lead{font-size:clamp(18px,1.7vw,25px);line-height:1.8;color:var(--text);margin:7px 0}
 strong,.accent{color:var(--honey)}
-.subtitle{font-size:clamp(18px,2vw,25px);line-height:1.9;color:var(--text);max-width:900px}
+.subtitle{font-size:clamp(21px,2.4vw,33px);line-height:1.8;color:var(--text);max-width:900px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:8px 0 12px}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:var(--shadow)}
 .card.gold{border-color:var(--honey-line);background:var(--honey-soft)}
-.card p{font-size:clamp(14px,1.2vw,16px);margin:4px 0 0}
+.card p{font-size:clamp(17px,1.55vw,22px);margin:4px 0 0}
 ul{padding:0 21px 0 0;margin:7px 0}
-li{font-size:clamp(14px,1.2vw,16px);line-height:1.85;margin:5px 0;color:var(--text)}
+li{font-size:clamp(17px,1.55vw,22px);line-height:1.7;margin:5px 0;color:var(--text)}
 li::marker{color:var(--honey)}
-.callout{border-right:4px solid var(--honey);padding:12px 16px;background:var(--honey-soft);border-radius:9px;font-size:clamp(16px,1.4vw,19px);line-height:1.9;margin:13px 0 4px;color:#4a3410}
-.example{border-right:4px solid var(--blue);padding:12px 16px;background:var(--blue-soft);border-radius:9px;font-size:clamp(15px,1.3vw,18px);line-height:1.9;margin:13px 0 4px;color:var(--ink)}
+.callout{border-right:4px solid var(--honey);padding:12px 16px;background:var(--honey-soft);border-radius:9px;font-size:clamp(18px,1.7vw,24px);line-height:1.8;margin:13px 0 4px;color:#4a3410}
+.example{border-right:4px solid var(--blue);padding:12px 16px;background:var(--blue-soft);border-radius:9px;font-size:clamp(18px,1.7vw,24px);line-height:1.8;margin:13px 0 4px;color:var(--ink)}
 .example b{color:var(--blue)}
-.mini{font-size:clamp(13px,1.1vw,15px)!important;color:var(--blue)!important;margin-top:10px!important;padding-top:8px;border-top:1px dashed var(--blue-line)}
-.tag{display:inline-block;border:1px solid var(--honey-line);background:var(--honey-soft);color:var(--honey);border-radius:30px;padding:4px 11px;font-size:12px;margin:3px}
-.metric{font-size:clamp(30px,3.2vw,44px);font-weight:900;color:var(--honey)}
+.mini{font-size:clamp(15px,1.35vw,19px)!important;color:var(--blue)!important;margin-top:10px!important;padding-top:8px;border-top:1px dashed var(--blue-line)}
+.tag{display:inline-block;border:1px solid var(--honey-line);background:var(--honey-soft);color:var(--honey);border-radius:30px;padding:4px 12px;font-size:15px;margin:3px}
+.metric{font-size:clamp(34px,3.6vw,52px);font-weight:900;color:var(--honey)}
 .flow{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px 0}
-.node{background:var(--panel);border:1px solid var(--blue-line);border-radius:11px;padding:13px 16px;text-align:center;min-width:145px;line-height:1.7;color:var(--text);box-shadow:var(--shadow)}
+.node{background:var(--panel);border:1px solid var(--blue-line);border-radius:11px;padding:13px 16px;text-align:center;min-width:165px;font-size:clamp(16px,1.45vw,21px);line-height:1.6;color:var(--text);box-shadow:var(--shadow)}
 .node b{color:var(--honey);display:block}
+.steps .node{min-width:0;height:100%}
 .arrow{color:var(--blue);font-size:22px;font-weight:700}
 .centered{text-align:center;justify-content:center}
 .centered .subtitle{margin-left:auto;margin-right:auto}
 .title-mark{width:70px;height:4px;background:linear-gradient(90deg,var(--blue),var(--honey));border-radius:8px;margin:12px 0 20px}
 .centered .title-mark{margin-left:auto;margin-right:auto}
-.small{font-size:13px;color:var(--muted);line-height:1.8}
-.source{font-size:12px;line-height:1.8;color:var(--muted);overflow-wrap:anywhere}
+.small{font-size:clamp(15px,1.3vw,18px);color:var(--muted);line-height:1.8}
+.source{font-size:clamp(13px,1.15vw,16px);line-height:1.8;color:var(--muted);overflow-wrap:anywhere}
 .source a,.card .source a{color:var(--blue);text-decoration:none}
 .source a:hover{text-decoration:underline}
 .people{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:18px 0 6px}
 .person{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:11px 24px;box-shadow:var(--shadow);min-width:220px}
-.person span{display:block;font-size:13px;color:var(--muted)}
-.person b{display:block;font-size:clamp(18px,1.8vw,23px);color:var(--ink);font-weight:800}
+.person span{display:block;font-size:16px;color:var(--muted)}
+.person b{display:block;font-size:clamp(21px,2.2vw,30px);color:var(--ink);font-weight:800}
 .top-progress{position:fixed;top:0;right:0;width:100%;height:4px;background:#dfe7f1;z-index:60}
 .top-progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--honey));transition:width .25s}
-.counter{position:fixed;top:14px;right:18px;z-index:20;color:var(--muted);font-size:12px}
+.counter{position:fixed;top:14px;right:18px;z-index:20;color:var(--muted);font-size:14px}
 .controls{position:fixed;z-index:40;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:0;align-items:center;padding:5px;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:13px;box-shadow:0 6px 24px rgba(20,34,58,.14)}
 .controls button,.notes-toggle{border:0;border-radius:9px;padding:9px 22px;background:#eef3f9;color:var(--ink);font:600 14px "Vazirmatn",sans-serif;cursor:pointer}
-.controls button{font-size:20px!important;line-height:1;padding:10px 28px!important}
+.controls button{font-size:24px!important;line-height:1;padding:10px 30px!important}
 .controls button+button{border-right:1px solid var(--line)}
 .controls button:hover,.notes-toggle:hover{background:var(--blue-soft);color:var(--blue)}
 .controls button:focus-visible,.notes-toggle:focus-visible,.notes-close:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
@@ -69,15 +70,15 @@ li::marker{color:var(--honey)}
 .fs-btn .i-exit{display:none}
 .fs-on .fs-btn .i-enter{display:none}
 .fs-on .fs-btn .i-exit{display:block}
-.notes-toggle{position:fixed;z-index:45;bottom:18px;right:18px;border:1px solid var(--line);padding:8px 12px;font-size:12px;background:#fff}
+.notes-toggle{position:fixed;z-index:45;bottom:18px;right:18px;border:1px solid var(--line);padding:8px 12px;font-size:14px;background:#fff}
 .notes-panel{position:fixed;z-index:55;right:0;left:0;bottom:0;min-height:170px;max-height:30vh;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(20,34,58,.12);padding:18px 7vw 24px;overflow-y:auto;transform:translateY(105%);transition:transform .3s ease}
 .notes-panel.open{transform:translateY(0)}
 .notes-panel h3{color:var(--honey)}
-.notes-panel p{font-size:14px}
+.notes-panel p{font-size:17px}
 .notes-close{position:absolute;left:18px;top:12px;background:#eef3f9;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:4px 9px;font:inherit;cursor:pointer}
 .notes{display:none}
 @media(max-width:700px){.grid,.grid.three,.grid.four{grid-template-columns:1fr}.slide{padding:5vh 5vw 125px}.slide-inner{width:90vw}.controls{bottom:10px}.controls button{padding:8px 17px}.notes-toggle{bottom:68px;right:12px}}
-@media print{@page{size:A4 landscape;margin:8mm}html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.slide{display:flex!important;min-height:194mm;height:194mm;width:281mm;overflow:hidden;padding:8mm 12mm 10mm;page-break-after:always;break-after:page}.slide-inner{width:100%;max-width:none}.slide:last-child{page-break-after:auto}.controls,.notes-toggle,.fs-btn,.counter,.top-progress,.notes-panel{display:none!important}}
+@media print{@page{size:A4 landscape;margin:8mm}html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.slide{display:flex!important;min-height:194mm;height:194mm;width:281mm;overflow:hidden;padding:8mm 12mm 10mm;page-break-after:always;break-after:page}.slide-inner{width:100%;max-width:none;zoom:.7!important}.slide:last-child{page-break-after:auto}.controls,.notes-toggle,.fs-btn,.counter,.top-progress,.notes-panel{display:none!important}}
 </style>
 </head>
 <body>
@@ -135,37 +136,37 @@ li::marker{color:var(--honey)}
 </div></section>
 
 <section class="slide"><div class="slide-inner">
-<div class="kicker">۴ • یک داستان واقعی</div><h2>نبرد ماراتن؛ پیروزی با نقشه</h2>
-<p class="lead">حدود سال ۴۹۰ پیش از میلاد، ارتش بزرگ هخامنشی در دشت ماراتن با ارتش کوچک‌تر آتن روبه‌رو شد. طبق روایت هرودوت، یونانی‌ها وسط صف خود را نازک و دو طرف را قوی کردند.</p>
-<div class="flow">
-<div class="node"><b>۱. صف نقشه‌دار</b>وسط ضعیف، دو طرف قوی</div><span class="arrow">←</span>
-<div class="node"><b>۲. دشمن جلو می‌آید</b>وسط عقب می‌رود و دشمن فکر می‌کند دارد می‌برد</div><span class="arrow">←</span>
-<div class="node"><b>۳. دو طرف پیروز می‌شوند</b>جناح‌ها دشمنِ مقابل خود را شکست می‌دهند</div><span class="arrow">←</span>
-<div class="node"><b>۴. دشمن گیر می‌افتد</b>دو طرف به هم می‌رسند و به نیروهای وسط حمله می‌کنند</div>
+<div class="kicker">۴ • یک داستان واقعی</div><h2>نبرد کاره؛ عقب‌نشینی ساختگی</h2>
+<p class="lead">سال ۵۳ پیش از میلاد، سپاه اشکانی (یک امپراتوری ایرانی) به فرماندهی سورنا در نبرد کاره با ارتش بسیار بزرگ‌تر روم روبه‌رو شد. ایرانیان سوارکاران تیرانداز بودند و نقشه داشتند.</p>
+<div class="grid four steps">
+<div class="node"><b>۱. وانمود به فرار</b>سوارکاران ایرانی وانمود می‌کنند عقب می‌نشینند</div>
+<div class="node"><b>۲. دشمن طعمه را می‌خورد</b>پسر فرمانده روم فکر می‌کند پیروز شده و دنبالشان می‌رود</div>
+<div class="node"><b>۳. جدا از ارتش اصلی</b>او و سربازانش از کمک دور می‌شوند</div>
+<div class="node"><b>۴. شکار می‌شوند</b>ایرانیان برمی‌گردند و از هر طرف حمله می‌کنند</div>
 </div>
-<div class="callout">درس برای ما: قدرت فقط تعداد سرباز و سلاح نیست؛ نقشه است. «ضعف ظاهری» وسط صف، دشمن را به جایی کشید که فرمانده انتخاب کرده بود؛ هانی‌پات هم همین کار را می‌کند.</div>
-<p class="small">مورخان درباره اینکه عقب رفتن وسط صف از قبل برنامه‌ریزی شده بود یا نه، اختلاف دارند؛ و ماراتن هانی‌پات نبود. ما فقط از آن درس استراتژی می‌گیریم.</p>
-<p class="source">منبع روایت: Herodotus, <i>Histories</i>, Book VI, 111–113.</p>
-<aside class="notes">داستان را کوتاه تعریف کنید: یونانی‌ها وسط صف را نازک کردند و دو طرف را قوی. وسط عقب رانده شد و دشمن جلو آمد، اما دو طرف پیروز شدند و به هم پیوستند. بعد بگویید: امنیت هم همین است؛ فقط ابزار نیست، نقشه و فکر است. تأکید کنید که این فقط یک مثال آموزشی است و مورخان درباره برنامه‌ریزی‌شده بودن عقب‌نشینی وسط اختلاف دارند.</aside>
+<div class="callout">درس برای ما: ایرانیان با یک «ضعف ساختگی» دشمن را به جایی کشاندند که خودشان انتخاب کرده بودند و نبرد را بردند. هانی‌پات هم همین کار را می‌کند.</div>
+<p class="small">این نبرد هانی‌پات نبود، اما همان ایده «طعمه» را نشان می‌دهد: ضعفی دروغین که دشمن را به دام می‌کشد.</p>
+<p class="source">منبع روایت: Plutarch, <i>Life of Crassus</i>, chs. 23–31.</p>
+<aside class="notes">داستان را کوتاه تعریف کنید: ارتش روم خیلی بزرگ‌تر بود، اما سورنا سوارکاران تیرانداز داشت. وقتی پسر فرمانده روم، پوبلیوس، به سمت سواران ایرانی حمله کرد، آن‌ها وانمود کردند فرار می‌کنند. او دنبالشان رفت و از ارتش اصلی جدا شد. بعد سواران ایرانی برگشتند و او و نیروهایش را شکست دادند. اشاره کنید که این یک مثال از استراتژی و طعمه است و نبرد کاره خودش هانی‌پات نبود.</aside>
 </div></section>
 
 <section class="slide"><div class="slide-inner">
 <div class="kicker">۵ • میدان نبرد امنیت</div><h2>دو فرمانده، دو ارتش، یک میدان</h2>
 <div class="grid two">
 <div class="card gold"><h3>فرمانده دفاع (متخصص امنیت)</h3>
-<ul><li>فایروال: مثل دیوار قلعه که ورود را کنترل می‌کند</li><li>آنتی‌ویروس: مثل نگهبان که برنامه‌های خطرناک را پیدا می‌کند</li><li>سیستم هشدار: مثل برج دیده‌بانی</li><li><strong>سلاح مخفی: هانی‌پات</strong></li></ul></div>
+<ul><li>فایروال: مثل دیوار قلعه</li><li>آنتی‌ویروس: مثل نگهبان</li><li>سیستم هشدار: مثل برج دیده‌بانی</li><li><strong>سلاح مخفی: هانی‌پات</strong></li></ul></div>
 <div class="card"><h3>فرمانده حمله (هکر)</h3>
-<ul><li>ابزار اسکن: پیدا کردن درهای باز</li><li>حدس زدن رمز عبور</li><li>بدافزار: برنامه‌ای برای آسیب زدن</li><li>فریب دادن آدم‌ها (مثلاً پیام جعلی)</li></ul></div>
+<ul><li>ابزار اسکن: پیدا کردن درهای باز</li><li>حدس زدن رمز عبور</li><li>بدافزار: برنامه برای آسیب زدن</li><li>فریب دادن آدم‌ها با پیام جعلی</li></ul></div>
 </div>
-<div class="flow">
-<div class="node"><b>ضعف ظاهری</b>هانی‌پات مثل وسط ضعیف صف</div><span class="arrow">←</span>
-<div class="node"><b>هکر وارد می‌شود</b>فکر می‌کند برنده است</div><span class="arrow">←</span>
-<div class="node"><b>همه حرکاتش ثبت می‌شود</b>روش و ابزارش را می‌بینیم</div><span class="arrow">←</span>
-<div class="node"><b>ما برنده می‌شویم</b>دفاع را قوی می‌کنیم و رد او را می‌گیریم</div>
+<div class="grid four steps">
+<div class="node"><b>۱. ضعف ظاهری</b>هانی‌پات مثل عقب‌نشینی ساختگی</div>
+<div class="node"><b>۲. هکر وارد می‌شود</b>فکر می‌کند برنده است</div>
+<div class="node"><b>۳. همه حرکاتش ثبت می‌شود</b>روش و ابزارش را می‌بینیم</div>
+<div class="node"><b>۴. ما برنده می‌شویم</b>دفاع را قوی می‌کنیم و رد او را می‌گیریم</div>
 </div>
 <div class="callout">این یک جنگ فکرهاست: برنده کسی است که دشمن را بهتر بشناسد و او را به جایی بکشاند که خودش انتخاب کرده است.</div>
-<p class="small">پیدا کردن خود هکر همیشه آسان نیست؛ او ممکن است پشت چند کامپیوتر دیگر پنهان شود. این کار معمولاً با کمک متخصصان و مراجع قانونی انجام می‌شود و ما نباید خودمان به او حمله کنیم.</p>
-<aside class="notes">دو فرمانده را معرفی کنید: متخصص امنیت و هکر. هر کدام ارتش و ابزار خودشان را دارند. فرمانده دفاع هانی‌پات را مثل همان وسط ضعیف صف در ماراتن به کار می‌برد تا هکر را به محیطی بکشاند که همه حرکاتش دیده و ثبت می‌شود. از آن اطلاعات برای قوی‌تر کردن دفاع و کمک به ردیابی استفاده می‌شود. تأکید کنید که پیدا کردن شخص هکر کار ساده‌ای نیست.</aside>
+<p class="small">پیدا کردن خود هکر آسان نیست؛ او می‌تواند پشت چند کامپیوتر پنهان شود. این کار با کمک متخصصان و مراجع قانونی انجام می‌شود و ما نباید خودمان به او حمله کنیم.</p>
+<aside class="notes">دو فرمانده را معرفی کنید: متخصص امنیت و هکر. هر کدام ارتش و ابزار خودشان را دارند. فرمانده دفاع هانی‌پات را مثل همان عقب‌نشینی ساختگی در نبرد کاره به کار می‌برد تا هکر را به محیطی بکشاند که همه حرکاتش دیده و ثبت می‌شود. از آن اطلاعات برای قوی‌تر کردن دفاع و کمک به ردیابی استفاده می‌شود. تأکید کنید که پیدا کردن شخص هکر کار ساده‌ای نیست.</aside>
 </div></section>
 
 <section class="slide"><div class="slide-inner">
@@ -327,7 +328,7 @@ li::marker{color:var(--honey)}
 <div class="kicker">۱۹ • منابع</div><h2>منابع اصلی</h2>
 <div class="grid two">
 <div class="card"><h3>کتاب و راهنما</h3>
-<p class="source">Herodotus, <i>Histories</i>, Book VI, 111–117 (نبرد ماراتن).</p>
+<p class="source">Plutarch, <i>Life of Crassus</i>, chs. 23–31 (نبرد کاره).</p>
 <p class="source">Spitzner, L. (2002). <i>Honeypots: Tracking Hackers</i>. Addison-Wesley.</p>
 <p class="source">Provos, N. &amp; Holz, T. (2007). <i>Virtual Honeypots: From Botnet Tracking to Intrusion Detection</i>. Addison-Wesley.</p>
 <p class="source">Scarfone, K. &amp; Mell, P. (2007). NIST SP 800-94, <i>Guide to Intrusion Detection and Prevention Systems (IDPS)</i>. <a href="https://doi.org/10.6028/NIST.SP.800-94" target="_blank" rel="noopener">DOI</a></p>
@@ -359,7 +360,7 @@ li::marker{color:var(--honey)}
 <svg class="i-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
 <svg class="i-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>
 </button>
-<div class="counter" id="counter">01 / 21</div>
+<div class="counter" id="counter" dir="ltr">01 / 21</div>
 <div class="controls"><button type="button" onclick="prevSlide()" aria-label="اسلاید قبلی" title="قبلی">↑</button><button type="button" onclick="nextSlide()" aria-label="اسلاید بعدی" title="بعدی">↓</button></div>
 <button class="notes-toggle" type="button" onclick="toggleNotes()">یادداشت سخنران</button>
 <aside class="notes-panel" id="notesPanel" aria-live="polite">
@@ -368,7 +369,8 @@ li::marker{color:var(--honey)}
 </aside>
 <script>
 const slides=[...document.querySelectorAll(".slide")];let current=0;const notesPanel=document.getElementById("notesPanel");
-function showSlide(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle("active",i===current));document.getElementById("counter").textContent=String(current+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");document.getElementById("progressBar").style.width=((current+1)/slides.length*100)+"%";if(notesPanel.classList.contains("open"))updateNotes()}
+function fitSlide(){const s=slides[current],inner=s.querySelector(".slide-inner");inner.style.zoom=1;if(window.innerWidth<700)return;const cs=getComputedStyle(s);const avail=window.innerHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);const h=inner.offsetHeight;if(h>avail)inner.style.zoom=Math.max(.7,avail/h)}
+function showSlide(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle("active",i===current));document.getElementById("counter").textContent=String(current+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");document.getElementById("progressBar").style.width=((current+1)/slides.length*100)+"%";fitSlide();if(notesPanel.classList.contains("open"))updateNotes()}
 function toggleFullscreen(){const d=document,el=d.documentElement;const on=d.fullscreenElement||d.webkitFullscreenElement;try{if(on){(d.exitFullscreen||d.webkitExitFullscreen).call(d)}else{(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}}catch(e){}}
 function syncFs(){document.body.classList.toggle("fs-on",!!(document.fullscreenElement||document.webkitFullscreenElement))}
 document.addEventListener("fullscreenchange",syncFs);document.addEventListener("webkitfullscreenchange",syncFs);
@@ -377,6 +379,6 @@ function nextSlide(){showSlide(current+1)}function prevSlide(){showSlide(current
 function updateNotes(){const note=slides[current].querySelector(".notes");document.getElementById("notesText").textContent=note?note.textContent.trim():"برای این اسلاید یادداشتی ثبت نشده است."}
 function toggleNotes(){const opening=!notesPanel.classList.contains("open");if(opening)updateNotes();notesPanel.classList.toggle("open",opening)}
 document.addEventListener("keydown",e=>{if(["ArrowDown","PageDown"," ","ArrowLeft"].includes(e.key)){e.preventDefault();nextSlide()}else if(["ArrowUp","PageUp","ArrowRight"].includes(e.key)){e.preventDefault();prevSlide()}else if(e.key==="f"||e.key==="F"){toggleFullscreen()}else if(e.key==="Home"){showSlide(0)}else if(e.key==="End"){showSlide(slides.length-1)}else if(e.key==="Escape")notesPanel.classList.remove("open")});
-let touchStartX=0;document.addEventListener("touchstart",e=>touchStartX=e.changedTouches[0].screenX,{passive:true});document.addEventListener("touchend",e=>{const d=e.changedTouches[0].screenX-touchStartX;if(Math.abs(d)>65)d<0?nextSlide():prevSlide()},{passive:true});showSlide(0);
+let touchStartX=0;document.addEventListener("touchstart",e=>touchStartX=e.changedTouches[0].screenX,{passive:true});document.addEventListener("touchend",e=>{const d=e.changedTouches[0].screenX-touchStartX;if(Math.abs(d)>65)d<0?nextSlide():prevSlide()},{passive:true});showSlide(0);window.addEventListener("resize",fitSlide);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSlide);
 </script>
 </body></html>
